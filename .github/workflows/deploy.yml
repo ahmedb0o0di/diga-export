@@ -43,6 +43,13 @@ jobs:
             php artisan route:cache
             php artisan view:cache
             
+            # Sync public assets to public_html for cPanel document root
+            if [ -d "../public_html" ]; then
+              echo "📂 Syncing public assets to public_html..."
+              mkdir -p ../public_html/assets
+              cp -r public/assets/* ../public_html/assets/ 2>/dev/null || true
+            fi
+
             # Ensure correct file permissions
             chmod -R 775 storage bootstrap/cache
             
