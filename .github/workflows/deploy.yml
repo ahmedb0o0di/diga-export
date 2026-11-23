@@ -1,0 +1,47 @@
+name: Auto Deploy to Server
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  deploy:
+    name: Deploy to Live Server
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Execute Deployment Commands via SSH
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.SSH_HOST }}
+          username: ${{ secrets.SSH_USER }}
+          key: ${{ secrets.SSH_KEY }}
+          port: ${{ secrets.SSH_PORT || 22 }}
+          script: |
+            set -e
+            echo "🚀 Starting Deployment on $(hostname)..."
+            cd ${{ secrets.DEPLOY_PATH || '/var/www/dijagroup.com' }}
+            
+            # Fetch and pull latest changes from main
+            git pull origin main
+            
+            # Install production dependencies
+            composer install --no-dev --prefer-dist --optimize-autoloader --no-interaction
+            
+            # Run database migrations
+            php artisan migrate --force
+            
+            # Clear & optimize caches for peak production performance
+            php artisan optimize:clear
+            php artisan config:cache
+            php artisan route:cache
+            php artisan view:cache
+            
+            # Ensure correct file permissions
+            chmod -R 775 storage bootstrap/cache
+            
+            echo "✅ Deployment finished successfully!"
