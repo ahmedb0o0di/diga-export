@@ -62,7 +62,7 @@ class FrontendController extends Controller
 
     public function submitInquiry(Request $request)
     {
-        $validated = \Illuminate\Support\Facades\Validator::make($request->all(), [
+        $validated = $request->validate([
             'name' => 'required|string|max:191',
             'email' => 'required|email|max:191',
             'phone' => 'nullable|string|max:50',
@@ -70,7 +70,7 @@ class FrontendController extends Controller
             'subject' => 'nullable|string|max:191',
             'message' => 'required|string|max:5000',
             'type' => 'nullable|in:quote,contact',
-        ])->validate();
+        ]);
 
         Inquiry::create([
             'name' => $validated['name'],
@@ -100,3 +100,4 @@ class FrontendController extends Controller
         return redirect()->back();
     }
 }
+
