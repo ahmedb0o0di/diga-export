@@ -54,7 +54,7 @@
                     <h2 class="title mb--25" style="line-height: 1.4;">{{ $post->getTrans('title') }}</h2>
 
                     <div class="blog-content" style="font-size: 17px; line-height: 1.85; color: #333;">
-                        {!! nl2br(e($post->getTrans('content'))) !!}
+                        {!! \Illuminate\Support\Str::markdown($post->getTrans('content')) !!}
                     </div>
 
                     <div class="quote-area-blog-details my--40 p-4 p-md-5 rounded" style="background: #0A192F; position: relative;">
