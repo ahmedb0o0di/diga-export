@@ -16,8 +16,18 @@
     <div class="swiper mySwiper-banner-one">
         <div class="swiper-wrapper">
             @foreach($slides as $slide)
+            @php
+                $slideImg = $slide->image;
+                if (!$slideImg || str_contains($slideImg, 'bg-01')) {
+                    $slideImg = 'assets/images/banner/01.jpg';
+                } elseif (str_contains($slideImg, 'bg-02')) {
+                    $slideImg = 'assets/images/banner/04.jpg';
+                } elseif (str_contains($slideImg, 'bg-03')) {
+                    $slideImg = 'assets/images/banner/05.jpg';
+                }
+            @endphp
             <div class="swiper-slide">
-                <div class="tmp-banner-area bg_image banner-one-height-control tmp-section-gap" style="background-image: url('{{ asset($slide->image ?: 'assets/images/banner/bg-01.jpg') }}'); background-size: cover; background-position: center;">
+                <div class="tmp-banner-area bg_image banner-one-height-control tmp-section-gap" style="background-image: url('{{ asset($slideImg) }}'); background-size: cover; background-position: center;">
                     <div class="shape-image-banner-one">
                         <img src="{{ asset('assets/images/banner/shape/01.png') }}" alt="banner" class="one">
                         <img src="{{ asset('assets/images/banner/shape/02.png') }}" alt="banner" class="two">

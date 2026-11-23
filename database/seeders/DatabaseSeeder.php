@@ -90,7 +90,7 @@ class DatabaseSeeder extends Seeder
                 'fr' => 'Explorer nos services'
             ],
             'button_link' => '/services',
-            'image' => 'assets/images/banner/bg-01.jpg',
+            'image' => 'assets/images/banner/01.jpg',
             'sort_order' => 1,
             'is_active' => true,
         ]);
@@ -117,7 +117,7 @@ class DatabaseSeeder extends Seeder
                 'fr' => 'Demander un devis'
             ],
             'button_link' => '/contact',
-            'image' => 'assets/images/banner/bg-02.jpg',
+            'image' => 'assets/images/banner/04.jpg',
             'sort_order' => 2,
             'is_active' => true,
         ]);
@@ -144,7 +144,7 @@ class DatabaseSeeder extends Seeder
                 'fr' => 'Contacter notre équipe'
             ],
             'button_link' => '/contact',
-            'image' => 'assets/images/banner/bg-03.jpg',
+            'image' => 'assets/images/banner/05.jpg',
             'sort_order' => 3,
             'is_active' => true,
         ]);
