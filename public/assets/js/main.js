@@ -355,7 +355,9 @@
         },
 
         wowActive: function () {
-            new WOW().init();
+            if (typeof WOW !== 'undefined') {
+                new WOW().init();
+            }
         },
 
         // prograss bar End 

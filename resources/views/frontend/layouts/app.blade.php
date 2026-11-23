@@ -396,8 +396,11 @@
     <script src="{{ asset('assets/js/plugins/scrolltigger.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/scrolltoplugins.js') }}"></script>
     <script src="{{ asset('assets/js/plugins/cursor.js') }}"></script>
-    <script src="{{ asset($isRtl ? 'assets/css/vendor/bootstrap.rtl.min.css' : 'assets/css/vendor/bootstrap.min.css') }}"></script>
     <script src="{{ asset('assets/js/vendor/metismenu.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/waw.js') }}"></script>
+    <script src="{{ asset('assets/js/vendor/sal.min.js') }}"></script>
+    <script src="{{ asset('assets/js/plugins/isotop.js') }}"></script>
     <script src="{{ asset('assets/js/main.js') }}"></script>
 
     @stack('scripts')
