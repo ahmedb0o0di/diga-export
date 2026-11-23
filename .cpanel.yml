@@ -1,0 +1,9 @@
+---
+deployment:
+  tasks:
+    - export DEPLOYPATH=/home/dijahymi/public_html
+    - /bin/mkdir -p $DEPLOYPATH/assets
+    - /bin/cp -rf public/assets/* $DEPLOYPATH/assets/
+    - /bin/cp -f public/assets/images/banner/01.jpg $DEPLOYPATH/assets/images/banner/bg-01.jpg 2>/dev/null || true
+    - /bin/cp -f public/assets/images/banner/04.jpg $DEPLOYPATH/assets/images/banner/bg-02.jpg 2>/dev/null || true
+    - /bin/cp -f public/assets/images/banner/05.jpg $DEPLOYPATH/assets/images/banner/bg-03.jpg 2>/dev/null || true
